@@ -1,18 +1,18 @@
 class BlocNotas (var notas:MutableList<Nota>) {
 
-    fun introducirNotas(){
-        print("aaa")
+    fun introducirNota(nota:Nota){
+        notas.add(nota)
     }
 
-    fun listarNotas(){
-
+    fun listarNota(){
+        println(notas.toString())
     }
 
-    fun eliminarNotas(posicion:Int){
+    fun eliminarNota(posicion:Int){
         notas.removeAt(posicion)
     }
 
-    fun contarNotas():Int{
+    fun contarNota():Int{
         return notas.size
     }
 

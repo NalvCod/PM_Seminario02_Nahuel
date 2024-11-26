@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 fun main(){
     /*
     Ejercicio 1.
@@ -7,6 +9,7 @@ fun main(){
     devuelve el planeta de mayor masa, .planetaMenor() que devuelve el planeta de menor
     masa y .masaMedia() que devuelve la masa media de los planetas del sistema solar.
      */
+    println("\nEJERCICIO 1")
     var planetas = listOf(
         Planeta ("Mercurio", "gaseoso", 2000),
         Planeta ("Venus", "gaseoso", 3000),
@@ -30,6 +33,7 @@ fun main(){
     .rectangulo():Boolean que calcula si el triángulo es rectángulo. Nota (se parte de la
     hipótesis de que la longitud de los lados dados crean un triángulo)
      */
+    println("\nEJERCICIO 2")
     var triangulo = Triangulo(3f, 4f, 5f, 0f, "aa")
     println(triangulo.rectangulo())
 
@@ -40,6 +44,8 @@ fun main(){
     clase debe tener propiedades como nombre, número de teléfono y dirección de correo electrónico. Luego,
     crea una lista de objetos Contacto y permite a los usuarios agregar, eliminar y mostrar contactos.
      */
+
+    println("\nEJERCICIO 3")
 
     var listaContactos = mutableListOf(
         Contacto("Nahuel", 666666, "gmial.com"),
@@ -59,6 +65,7 @@ fun main(){
     crea una lista de objetos Estudiante y permite a los usuarios agregar nuevos estudiantes, mostrar la
     información de un estudiante en particular y calcular el promedio de calificaciones de todos los estudiantes.
      */
+    println("\nEJERCICIO 4")
 
     var estudiantes = mutableListOf(
         Estudiante("Nahuel", 25, mutableListOf(10, 3, 5, 6)),
@@ -94,6 +101,7 @@ fun main(){
     Ejercicio 9. Muestra por pantalla todos los planetas gaseosos cuya masa sea superior a 20 veces la de la tierra
     Ejercicio 10. Muestra por pantalla la masa media de los planetas del sistema solar
      */
+    println("\nEJERCICIOS 6 A 10")
 
     println(planetas)
 
@@ -125,6 +133,7 @@ fun main(){
         de la Champions. *(no tengas en cuenta que equipos de un mismo país no
         pueden enfrentarse)
      */
+    println("\nEJERCICIOS 11 A 13")
 
     var equiposFutbol = mutableListOf(
         Futbol("Equipo 1", "España"),
@@ -145,7 +154,22 @@ fun main(){
         Futbol("Equipo 16", "España"),
     )
 
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAA???????????????????????????????????????
+    fun championsLeague(lista:MutableList<Futbol>): MutableList<Futbol> {
+        var listaNueva : MutableList<Futbol> = mutableListOf<Futbol>()
+        val numeros = IntArray(8)
+        var cont = 0
+        while (cont < 8) {
+            val num = Random.nextInt(16)
+            if (num !in numeros) {
+                numeros[cont++] = num //Post incremento segun Jaime. Cuando lo lee, suma uno
+                listaNueva.add(lista[num])
+            }
+        }
+        return listaNueva
+    }
+
+    var listaN = championsLeague(equiposFutbol)
+    println(listaN)
 
     /*
     Ejercicio 14:
@@ -154,7 +178,7 @@ fun main(){
     circunferencia y un punto cualquiera de la misma. Crear el metodo longitud()
     y sobrecargar el metodo toString() de forma que muestre toda la info de la circunferencia
      */
-
+    println("\nEJERCICIO 14")
 
     /*
     Ejercicio 15:
@@ -165,12 +189,15 @@ fun main(){
     circunferencia
      */
 
+    println("\nEJERCICIO 15")
+
     /*
     Ejercicio 16:
     Clase de matemáticas. Crea una clase Matemáticas con métodos para realizar
     operaciones matemáticas como sumar, restar, multiplicar y dividir. Luego, utiliza esta clase en tu
     programa principal.
      */
+    println("\nEJERCICIO 16")
     var m = Matematicas (2,3)
     println(m.restar())
     println(m.sumar())
@@ -191,7 +218,7 @@ fun main(){
 
     clase Prueba que cree un bloc de Notas de ejemplo y pruebe las operaciones que soporta.
      */
-
+    println("\nEJERCICIO 17")
 
 
     /*
@@ -206,6 +233,7 @@ fun main(){
     Define un metodo que, dado un objeto del sistema solar (planeta o satélite),
     imprima toda la información de que se dispone sobre el mismo.
      */
+    println("\nEJERCICIO 18")
 
     /*
     Ejercicio 19.
@@ -219,7 +247,16 @@ fun main(){
     que ambos personajes subirán de nivel siempre a la vez ¿en qué
     nivel el guerrero tendrá más PV que el mago?
      */
-
+    println("\nEJERCICIO 19")
+    var guerrerito = Guerrero("Manu", 400f, 50f, 1)
+    var maguito = Mago("Nagu", 1600f, 150f, 1)
+//    for (i in 0 .. 100){
+//        guerrerito.lvlUp()
+//        println(guerrerito.toString())
+//        maguito.lvlUp()
+//        println(maguito.toString())
+//    }
+    println("Hasta el nivel 99 el guerrero no tendrá más PV que el mago")
 
     /*
     Ejercicio 20.
@@ -229,6 +266,25 @@ fun main(){
     dicho año y plataforma. La función también debe poder usarse especificando solo el año
     o solo la plataforma.
      */
+    println("\nEJERCICIO 20")
+    var listaJuegos = mutableListOf(
+        Videojuegos("Anal Cruissing", 2000, "Noentiendo Switch"),
+        Videojuegos("Mainkampf", 2010, "Mojón"),
+        Videojuegos("The legend of Zerda", 1989, "GameCube"),
+        Videojuegos("Hollow Knight", 2000, "Noentiendo Switch")
+    )
+
+    fun devolverVideojuegoAnhoPlataforma(lista:MutableList<Videojuegos>, anho:Int = 0, plataforma : String =""):MutableList<Videojuegos>{
+        var listaJuegosEncontrados : MutableList<Videojuegos> = mutableListOf()
+        for (juego in lista){
+            if (juego.anho == anho && juego.plataforma == ""){
+                listaJuegosEncontrados.add(juego)
+            }else if (juego.plataforma == plataforma && juego.anho == 0){
+                listaJuegosEncontrados.add(juego)
+            }
+        }
+        return listaJuegosEncontrados
+    }
 
     /*
     Ejercicio 21.
@@ -237,11 +293,39 @@ fun main(){
     plataformas. La función debe poder usarse si solo se especifica la lista de años o la lista
     de plataformas.
      */
+    println("\nEJERCICIO 21")
+    var listaAnhos = mutableListOf(1999, 2000)
+    var listaPlataformas = mutableListOf("Noentiendo Switch", "Mojón")
+    fun devolverVideojuegoListas(lista:MutableList<Videojuegos>, lista2:MutableList<Any>){
+        var listaJuegosEncontrados : MutableList<Videojuegos> = mutableListOf()
+        for (juego in lista){
+            for (elemento in lista2){
+                if (juego.anho == elemento || juego.plataforma == elemento){
+                    listaJuegosEncontrados.add(juego)
+                }
+            }
+        }
+    }
 
     /*
     Ejercicio 22.
     Crea una función que reciba una lista de juegos y devuelva un mapa
     donde las claves sean las plataformas y el valor el número de juegos para dicha plataforma.
      */
+    println("\nEJERCICIO 22")
+    fun mapaVideojuegos(lista:MutableList<Videojuegos>):Map<String, Int>{
+        val mapaJuegos : HashMap<String, Int> = HashMap()
+
+        for (juegos in lista){
+            //Si no está la plataforma en el mapa, lo introduzco
+            if(!(mapaJuegos.containsKey(juegos.plataforma))){
+                mapaJuegos[juegos.plataforma] = 1
+            }else{
+                mapaJuegos[juegos.plataforma] =  mapaJuegos[juegos.plataforma]!! + 1
+            }
+        }
+        return mapaJuegos
+    }
+
 }
 
