@@ -11,16 +11,16 @@ fun main(){
      */
     println("\nEJERCICIO 1")
     var planetas = listOf(
-        Planeta ("Mercurio", "gaseoso", 2000),
-        Planeta ("Venus", "gaseoso", 3000),
-        Planeta ("Tierra", "rocoso", 5000),
-        Planeta ("Tierra", "rocoso", 6000),
-        Planeta ("Marte", "rocoso", 5000),
-        Planeta ("Jupiter", "rocoso", 9000),
-        Planeta ("Saturno", "rocoso", 5000),
-        Planeta ("Urano", "rocoso", 7000),
-        Planeta ("Neptuno", "rocoso", 200),
-        Planeta ("Plutón", "rocoso", 5000),
+        Planeta ("Mercurio", "gaseoso", 2000.0),
+        Planeta ("Venus", "gaseoso", 3000.0),
+        Planeta ("Tierra", "rocoso", 5000.0),
+        Planeta ("Tierra", "rocoso", 6000.0),
+        Planeta ("Marte", "rocoso", 5000.0),
+        Planeta ("Jupiter", "rocoso", 9000.0),
+        Planeta ("Saturno", "rocoso", 5000.0),
+        Planeta ("Urano", "rocoso", 7000.0),
+        Planeta ("Neptuno", "rocoso", 200.0),
+        Planeta ("Plutón", "rocoso", 5000.0),
     )
     var ss = SistemaSolar(planetas)
     println(ss.planetaMayor())
@@ -163,13 +163,15 @@ fun main(){
             if (num !in numeros) {
                 numeros[cont++] = num //Post incremento segun Jaime. Cuando lo lee, suma uno
                 listaNueva.add(lista[num])
+                if (cont%2 != 0){
+                    print("El equipo "+lista[num].nombre+" de "+lista[num].pais+ "jugará contra: ")
+                }else{
+                    print(lista[num].nombre+"de "+lista[num].pais+"\n")
+                }
             }
         }
         return listaNueva
     }
-
-    var listaN = championsLeague(equiposFutbol)
-    println(listaN)
 
     /*
     Ejercicio 14:
@@ -274,17 +276,21 @@ fun main(){
         Videojuegos("Hollow Knight", 2000, "Noentiendo Switch")
     )
 
-    fun devolverVideojuegoAnhoPlataforma(lista:MutableList<Videojuegos>, anho:Int = 0, plataforma : String =""):MutableList<Videojuegos>{
+    fun devolverVideojuegoAnhoPlataforma(lista:MutableList<Videojuegos>, anho:Int? = 0, plataforma : String? =""):MutableList<Videojuegos>{
         var listaJuegosEncontrados : MutableList<Videojuegos> = mutableListOf()
         for (juego in lista){
-            if (juego.anho == anho && juego.plataforma == ""){
+            if (juego.anho == anho){
                 listaJuegosEncontrados.add(juego)
-            }else if (juego.plataforma == plataforma && juego.anho == 0){
+            }else if (juego.plataforma == plataforma){
                 listaJuegosEncontrados.add(juego)
             }
         }
         return listaJuegosEncontrados
     }
+
+    println(devolverVideojuegoAnhoPlataforma(listaJuegos, 2000, "Noentiendo Switch"))
+    println(devolverVideojuegoAnhoPlataforma(listaJuegos, plataforma = "GameCube"))
+    println(devolverVideojuegoAnhoPlataforma(listaJuegos, 2000))
 
     /*
     Ejercicio 21.
@@ -294,8 +300,8 @@ fun main(){
     de plataformas.
      */
     println("\nEJERCICIO 21")
-    var listaAnhos = mutableListOf(1999, 2000)
-    var listaPlataformas = mutableListOf("Noentiendo Switch", "Mojón")
+    var listaAnhos = mutableListOf<Any>(1999, 2000)
+    var listaPlataformas = mutableListOf<Any>("Noentiendo Switch", "Mojón")
     fun devolverVideojuegoListas(lista:MutableList<Videojuegos>, lista2:MutableList<Any>){
         var listaJuegosEncontrados : MutableList<Videojuegos> = mutableListOf()
         for (juego in lista){
@@ -306,6 +312,8 @@ fun main(){
             }
         }
     }
+    println(devolverVideojuegoListas(listaJuegos, listaAnhos))
+    println(devolverVideojuegoListas(listaJuegos, listaPlataformas))
 
     /*
     Ejercicio 22.
@@ -326,6 +334,6 @@ fun main(){
         }
         return mapaJuegos
     }
-
+    println(mapaVideojuegos(listaJuegos))
 }
 

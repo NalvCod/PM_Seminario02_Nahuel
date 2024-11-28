@@ -26,7 +26,7 @@ class SistemaSolar (val planetas : List<Planeta>) {
     fun planetaMedia():Int{
         var suma = 0
         for (planeta in planetas){
-            suma += planeta.masa
+            suma += planeta.masa.toInt()
         }
         return suma / (planetas.size+1)
     }
